@@ -62,7 +62,7 @@ dependencies = [
 
 # Optional dependencies for production
 all = [
-    "python-telegram-bot[ext,http2,passport,socks]",
+    "python-telegram-bot[ext,http2,passport,socks,others]",
 ]
 callback-data = [
     # Cachetools doesn't have a strict stability policy. Let's be cautious for now.
@@ -79,6 +79,9 @@ job-queue = [
     "APScheduler~=3.10.4",
     # pytz is required by APS and just needs the lower bound due to #2120
     "pytz>=2018.6",
+]
+others = [
+    "python-dotenv~=1.0.1",
 ]
 passport = [
     "cryptography!=3.4,!=3.4.1,!=3.4.2,!=3.4.3,>=39.0.1",

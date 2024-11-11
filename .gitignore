@@ -95,3 +95,6 @@ venv*
 
 # environment manager:
 .mise.toml
+
+# others
+rst2html
