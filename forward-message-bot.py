@@ -37,6 +37,9 @@ from dotenv import dotenv_values
 config = dotenv_values(".env")
 
 
+recipient_group_chat_ids = ["-1002431029666", "-1002347417100"]
+
+
 # Define a few command handlers. These usually take the two arguments update and context.
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a message when the command /start is issued."""
@@ -51,7 +54,9 @@ async def forward(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Forward a message when the command /forward is issued."""
     if update.message.reply_to_message:
         # Forward the message to the chat where the original message was sent
-        await update.message.reply_to_message.forward(chat_id=update.message.chat_id)
+        # await update.message.reply_to_message.forward(chat_id=update.message.chat_id)
+        for chat_id in recipient_group_chat_ids:
+            await update.message.reply_to_message.forward(chat_id)
     else:
         await update.message.reply_text("Please reply to a message you want to forward.")
 
@@ -59,7 +64,8 @@ async def forward(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 async def copy(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Copy a message when the command /copy is issued."""
     if update.message.reply_to_message:
-        await update.message.reply_to_message.copy(chat_id=update.message.chat_id)
+        for chat_id in recipient_group_chat_ids:
+            await update.message.reply_to_message.copy(chat_id)
     else:
         await update.message.reply_text("Please reply to a message you want to copy.")
 
