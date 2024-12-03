@@ -74,7 +74,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     """Send a message when the command /help is issued."""
     await update.message.reply_text("Use /start to start to greet the bot. "
                                     "Use /copy to copy message. "
-                                    "User /forward to forward a message.")
+                                    "Use /forward to forward a message.")
 
 
 def main() -> None:
