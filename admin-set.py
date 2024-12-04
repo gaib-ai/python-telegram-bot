@@ -159,7 +159,7 @@ class Admin:
         
         # screen text size to <4000 words
         if len(data_list_str) > 4000:
-            text = f"Result for {key} exceeds the 4000 word-limit, showing only the imcomplete results:\n"
+            text = f"Result for {key} exceeds the 4000 word-limit, showing only the incomplete results:\n"
             text += data_list[:4000-len(text)]
         else:
             text = f"<b>{len(data_list)}</b> {key}:\n {data_list_str}"
@@ -193,7 +193,7 @@ class Admin:
         
         data_headers = "[\n" + ",\n".join(str(i) for i in data_headers) + "\n]"     # convert any value into str       
         
-        return f"Dababase headers are: {data_headers}"
+        return f"Database headers are: {data_headers}"
 
     
     # sendmessage function to be used in broadcaster later
