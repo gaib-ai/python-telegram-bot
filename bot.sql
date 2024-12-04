@@ -1,6 +1,6 @@
-CREATE SCHEMA bot_schema;
+CREATE SCHEMA IF NOT EXISTS bot_schema;
 
-CREATE TABLE bot_schema.reaction (
+CREATE TABLE IF NOT EXISTS bot_schema.reaction (
   "reaction_id" int PRIMARY KEY NOT NULL,
   "user_id" int NOT NULL,
   "message_id" int NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE bot_schema.reaction (
   "reacted_at" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.notification (
+CREATE TABLE IF NOT EXISTS bot_schema.notification (
   "notification_id" int PRIMARY KEY NOT NULL,
   "user_id" int NOT NULL,
   "notification_content" text NOT NULL,
@@ -16,14 +16,14 @@ CREATE TABLE bot_schema.notification (
   "read_at" timestamp
 );
 
-CREATE TABLE bot_schema.contact (
+CREATE TABLE IF NOT EXISTS bot_schema.contact (
   "contact_id" int PRIMARY KEY NOT NULL,
   "user_id" int NOT NULL,
   "contact_user_id" int NOT NULL,
   "added_at" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.subscription (
+CREATE TABLE IF NOT EXISTS bot_schema.subscription (
   "subscription_id" int PRIMARY KEY NOT NULL,
   "user_id" int NOT NULL,
   "plan_name" varchar(50) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE bot_schema.subscription (
   "end_date" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.bot (
+CREATE TABLE IF NOT EXISTS bot_schema.bot (
   "bot_id" int PRIMARY KEY NOT NULL,
   "bot_name" varchar(100) NOT NULL,
   "bot_token" varchar(255) NOT NULL,
@@ -39,21 +39,21 @@ CREATE TABLE bot_schema.bot (
   "created_at" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.chat (
+CREATE TABLE IF NOT EXISTS bot_schema.chat (
   "chat_id" int PRIMARY KEY NOT NULL,
   "chat_name" varchar(100) NOT NULL,
   "created_at" timestamp NOT NULL,
   "chat_type" varchar(20) NOT NULL
 );
 
-CREATE TABLE bot_schema.user_status  (
+CREATE TABLE IF NOT EXISTS bot_schema.user_status  (
   "status_id" int PRIMARY KEY NOT NULL,
   "user_id" int NOT NULL,
   "status_text" varchar(150),
   "status_created_at" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.channel_message (
+CREATE TABLE IF NOT EXISTS bot_schema.channel_message (
   "channel_message_id" int PRIMARY KEY NOT NULL,
   "channel_id" int NOT NULL,
   "user_id" int NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE bot_schema.channel_message (
   "sent_at" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.group_message (
+CREATE TABLE IF NOT EXISTS bot_schema.group_message (
   "group_message_id" int PRIMARY KEY NOT NULL,
   "group_id" int NOT NULL,
   "user_id" int NOT NULL,
@@ -69,14 +69,14 @@ CREATE TABLE bot_schema.group_message (
   "sent_at" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.user_setting (
+CREATE TABLE IF NOT EXISTS bot_schema.user_setting (
   "setting_id" int PRIMARY KEY NOT NULL,
   "user_id" int NOT NULL,
   "setting_key" varchar(50) NOT NULL,
   "setting_value" varchar(255) NOT NULL
 );
 
-CREATE TABLE bot_schema.channel (
+CREATE TABLE IF NOT EXISTS bot_schema.channel (
   "channel_id" int PRIMARY KEY NOT NULL,
   "channel_name" varchar(100) NOT NULL,
   "creator_user_id" int NOT NULL,
@@ -84,7 +84,7 @@ CREATE TABLE bot_schema.channel (
   "channel_description" text
 );
 
-CREATE TABLE bot_schema.group (
+CREATE TABLE IF NOT EXISTS bot_schema.group (
   "group_id" int PRIMARY KEY NOT NULL,
   "group_name" varchar(100) NOT NULL,
   "creator_user_id" int NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE bot_schema.group (
   "group_description" text
 );
 
-CREATE TABLE bot_schema.device (
+CREATE TABLE IF NOT EXISTS bot_schema.device (
   "device_id" int PRIMARY KEY NOT NULL,
   "user_id" int NOT NULL,
   "device_name" varchar(100) NOT NULL,
@@ -100,7 +100,7 @@ CREATE TABLE bot_schema.device (
   "last_active" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.poll (
+CREATE TABLE IF NOT EXISTS bot_schema.poll (
   "poll_id" int PRIMARY KEY NOT NULL,
   "chat_id" int NOT NULL,
   "question" text NOT NULL,
@@ -108,13 +108,13 @@ CREATE TABLE bot_schema.poll (
   "expires_at" timestamp
 );
 
-CREATE TABLE bot_schema.channel_member (
+CREATE TABLE IF NOT EXISTS bot_schema.channel_member (
   "channel_id" int NOT NULL,
   "user_id" int NOT NULL,
   "joined_at" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.banned_user (
+CREATE TABLE IF NOT EXISTS bot_schema.banned_user (
   "ban_id" int PRIMARY KEY NOT NULL,
   "user_id" int NOT NULL,
   "banned_at" timestamp NOT NULL,
@@ -122,13 +122,13 @@ CREATE TABLE bot_schema.banned_user (
   "reason" text
 );
 
-CREATE TABLE bot_schema.poll_option (
+CREATE TABLE IF NOT EXISTS bot_schema.poll_option (
   "option_id" int PRIMARY KEY NOT NULL,
   "poll_id" int NOT NULL,
   "option_text" varchar(255) NOT NULL
 );
 
-CREATE TABLE bot_schema.bot_command (
+CREATE TABLE IF NOT EXISTS bot_schema.bot_command (
   "bot_command_id" int PRIMARY KEY NOT NULL,
   "bot_id" int NOT NULL,
   "command" varchar(50) NOT NULL,
@@ -136,7 +136,7 @@ CREATE TABLE bot_schema.bot_command (
   "created_at" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.poll_vote (
+CREATE TABLE IF NOT EXISTS bot_schema.poll_vote (
   "poll_vote_id" int PRIMARY KEY NOT NULL,
   "poll_id" int NOT NULL,
   "option_id" int NOT NULL,
@@ -144,48 +144,48 @@ CREATE TABLE bot_schema.poll_vote (
   "voted_at" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.admin (
+CREATE TABLE IF NOT EXISTS bot_schema.admin (
   "admin_id" int PRIMARY KEY NOT NULL,
   "user_id" int NOT NULL,
   "role_id" int NOT NULL,
   "assigned_at" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.user_role (
+CREATE TABLE IF NOT EXISTS bot_schema.user_role (
   "user_role_id" int PRIMARY KEY NOT NULL,
   "user_id" int NOT NULL,
   "role_id" int NOT NULL,
   "assigned_at" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.role (
+CREATE TABLE IF NOT EXISTS bot_schema.role (
   "role_id" int PRIMARY KEY NOT NULL,
   "role_name" varchar(50) NOT NULL,
   "role_description" text
 );
 
-CREATE TABLE bot_schema.payment (
+CREATE TABLE IF NOT EXISTS bot_schema.payment (
   "payment_id" int PRIMARY KEY NOT NULL,
   "user_id" int NOT NULL,
-  "amount" "decimal(10, 2)" NOT NULL,
+  "amount" numeric(10, 2) NOT NULL,
   "payment_method" varchar(50) NOT NULL,
   "payment_date" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.group_member (
+CREATE TABLE IF NOT EXISTS bot_schema.group_member (
   "group_id" int NOT NULL,
   "user_id" int NOT NULL,
   "joined_at" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.attachment (
+CREATE TABLE IF NOT EXISTS bot_schema.attachment (
   "attachment_id" int PRIMARY KEY NOT NULL,
   "message_id" int NOT NULL,
   "file_path" varchar(255) NOT NULL,
   "file_type" varchar(20) NOT NULL
 );
 
-CREATE TABLE bot_schema.call (
+CREATE TABLE IF NOT EXISTS bot_schema.call (
   "call_id" int PRIMARY KEY NOT NULL,
   "caller_user_id" int NOT NULL,
   "receiver_user_id" int NOT NULL,
@@ -194,14 +194,14 @@ CREATE TABLE bot_schema.call (
   "call_type" varchar(20) NOT NULL
 );
 
-CREATE TABLE bot_schema.user_invitation (
+CREATE TABLE IF NOT EXISTS bot_schema.user_invitation (
   "invitation_id" int PRIMARY KEY NOT NULL,
   "inviter_user_id" int NOT NULL,
   "invited_user_id" int NOT NULL,
   "invited_at" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.sticker (
+CREATE TABLE IF NOT EXISTS bot_schema.sticker (
   "sticker_id" int PRIMARY KEY NOT NULL,
   "sticker_name" varchar(50) NOT NULL,
   "file_path" varchar(255) NOT NULL,
@@ -209,7 +209,7 @@ CREATE TABLE bot_schema.sticker (
   "created_at" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.session (
+CREATE TABLE IF NOT EXISTS bot_schema.session (
   "session_id" int PRIMARY KEY NOT NULL,
   "user_id" int NOT NULL,
   "ip_address" varchar(45) NOT NULL,
@@ -217,7 +217,7 @@ CREATE TABLE bot_schema.session (
   "logout_at" timestamp
 );
 
-CREATE TABLE bot_schema.user (
+CREATE TABLE IF NOT EXISTS bot_schema.user (
   "user_id" int PRIMARY KEY NOT NULL,
   "username" varchar(50) NOT NULL,
   "phone_number" varchar(15) NOT NULL,
@@ -226,7 +226,7 @@ CREATE TABLE bot_schema.user (
   "last_seen" timestamp NOT NULL
 );
 
-CREATE TABLE bot_schema.message (
+CREATE TABLE IF NOT EXISTS bot_schema.message (
   "message_id" int PRIMARY KEY NOT NULL,
   "chat_id" int NOT NULL,
   "user_id" int NOT NULL,
